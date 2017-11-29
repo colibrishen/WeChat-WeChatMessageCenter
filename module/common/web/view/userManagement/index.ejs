@@ -1,0 +1,125 @@
+<!-- AUI Framework -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../../../../views/head %>
+</head>
+
+<body class="fixed-sidebar fixed-header">
+
+    <div id="loading" class="ui-front loader ui-widget-overlay bg-white opacity-100">
+        <img src="./images/loader-dark.gif" alt="">
+    </div>
+
+    <div id="page-wrapper" class="demo-example">
+        <div id="page-sidebar">
+            <% include ../../../../../views/header %>
+                <% include ../../../../../views/menu %>
+        </div>
+        <!-- #page-sidebar -->
+
+        <div id="page-main">
+            <!-- 主页头 -->
+            <div id="page-main-wrapper">
+                <div id="page-header" class="clearfix">
+                    <div id="page-header-wrapper" class="clearfix">
+                        <div class="top-icon-bar dropdown">
+                            <a href="javascript:;" title="" class="user-ico clearfix" data-toggle="dropdown">
+                                <img width="36" src="./images/gravatar.jpg" alt="">
+                                <span>Horia Simon</span>
+                                <i class="glyph-icon icon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu float-right">
+                                <li>
+                                    <a href="javascript:;" title="">
+                                        <i class="glyph-icon icon-signout font-size-13 mrg5R"></i>
+                                        <span class="font-bold">Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #page-header -->
+
+                <div id="page-breadcrumb-wrapper">
+                    <!-- 面包屑 -->
+                    <div id="page-breadcrumb">
+
+                        <!-- <a href="javascript:;" title="Dashboard">
+                            <i class="glyph-icon icon-dashboard"></i> 主页
+                        </a>
+                        <a href="javascript:;" title="Elements">
+                            <i class="glyph-icon icon-laptop"></i> Elements
+                        </a> -->
+                        <span class="current">
+                                <i class="glyph-icon icon-dashboard"></i> 用户管理
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- 内容 -->
+                <div id="page-content">
+<div >
+        <div class="col-md-3">
+                <div class="example-code">
+
+                    <div class="accordion ui-accordion ui-widget ui-helper-reset" role="tablist">
+                        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-2-header-0" aria-controls="ui-accordion-2-panel-0" aria-selected="false" tabindex="-1">
+                            <i class="glyph-icon icon-folder-o font-blue float-left"></i> 用户组1
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-2-panel-0" aria-labelledby="ui-accordion-2-header-0" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                            子归
+                        </div>
+                        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-2-header-1" aria-controls="ui-accordion-2-panel-1" aria-selected="false" tabindex="-1">
+                            <i class="glyph-icon icon-folder-o font-blue float-left"></i> 用户组2
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-2-panel-1" aria-labelledby="ui-accordion-2-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                            圣界
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+                    
+
+                    <div class="col-md-3">
+                        <div class="example-code">
+                            <div class="accordion ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-1-header-0" aria-controls="ui-accordion-1-panel-0" aria-selected="true" tabindex="0">
+                                        <i class="glyph-icon icon-user font-blue float-left"></i>沈恩付</h3>
+                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-1-panel-0" aria-labelledby="ui-accordion-1-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+                                    <div style="display: inline;">
+                                            <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
+                                            <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
+                                    </div>   
+                                </div>
+
+                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-1" aria-controls="ui-accordion-1-panel-1" aria-selected="false" tabindex="-1">
+                                        <i class="glyph-icon icon-user font-blue float-left"></i>邵佳伟</h3>
+                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-1" aria-labelledby="ui-accordion-1-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                    Accordion content 2
+                                </div>
+
+                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-2" aria-controls="ui-accordion-1-panel-2" aria-selected="false" tabindex="-1">
+                                        <i class="glyph-icon icon-user font-blue float-left"></i>小张</h3>
+                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-2" aria-labelledby="ui-accordion-1-header-2" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                    Accordion content 3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- #page-content -->
+            </div>
+            <!-- #page-main -->
+        </div>
+        <!-- #page-main-wrapper -->
+    </div>
+    <!-- #page-wrapper -->
+</body>
+
+</html>

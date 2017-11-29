@@ -1,0 +1,78 @@
+<!-- AUI Framework -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../../../../views/head %>
+</head>
+
+<body class="fixed-sidebar fixed-header">
+
+    <div id="loading" class="ui-front loader ui-widget-overlay bg-white opacity-100">
+        <img src="./images/loader-dark.gif" alt="">
+    </div>
+
+    <div id="page-wrapper" class="demo-example">
+        <div id="page-sidebar">
+            <% include ../../../../../views/header %>
+                <% include ../../../../../views/menu %>
+        </div>
+        <!-- #page-sidebar -->
+
+        <div id="page-main">
+            <!-- 主页头 -->
+            <div id="page-main-wrapper">
+                <div id="page-header" class="clearfix">
+                    <div id="page-header-wrapper" class="clearfix">
+                        <div class="top-icon-bar dropdown">
+                            <a href="javascript:;" title="" class="user-ico clearfix" data-toggle="dropdown">
+                                <img width="36" src="./images/gravatar.jpg" alt="">
+                                <span>Horia Simon</span>
+                                <i class="glyph-icon icon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu float-right">
+                                <li>
+                                    <a href="javascript:;" title="">
+                                        <i class="glyph-icon icon-signout font-size-13 mrg5R"></i>
+                                        <span class="font-bold">Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #page-header -->
+
+                <div id="page-breadcrumb-wrapper">
+                    <!-- 面包屑 -->
+                    <div id="page-breadcrumb">
+
+                        <!-- <a href="javascript:;" title="Dashboard">
+                            <i class="glyph-icon icon-dashboard"></i> 主页
+                        </a>
+                        <a href="javascript:;" title="Elements">
+                            <i class="glyph-icon icon-laptop"></i> Elements
+                        </a> -->
+                        <span class="current">
+                                <i class="glyph-icon icon-home"></i> 主页
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- 内容 -->
+                <div id="page-content">
+
+
+
+                </div>
+                <!-- #page-content -->
+            </div>
+            <!-- #page-main -->
+        </div>
+        <!-- #page-main-wrapper -->
+    </div>
+    <!-- #page-wrapper -->
+</body>
+
+</html>
