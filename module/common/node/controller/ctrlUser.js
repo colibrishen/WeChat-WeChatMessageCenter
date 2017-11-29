@@ -29,6 +29,11 @@ exports.ConnectDb = function(req, res) {
 exports.getUserGroup = function(req, res) {
     dbParam = req.body.model;
     connection = new mssql.ConnectionPool(dbParam, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
 
+        }
     });
 };
