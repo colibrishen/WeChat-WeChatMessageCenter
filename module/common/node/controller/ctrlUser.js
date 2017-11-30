@@ -10,11 +10,11 @@ var db = require('../../../../routes/db.js')
 var dbParam = {};
 var connection = {};
 
-exports.Index = function(req, res) {
+exports.index = function(req, res) {
     res.render(res.render(path.resolve(__dirname, '../../web/view/userManagement/index')));
 };
 
-exports.ConnectDb = function(req, res) {
+exports.connectDb = function(req, res) {
     dbParam = req.body.model;
     connection = new mssql.ConnectionPool(dbParam, function(err) {
         if (err) {
@@ -33,7 +33,12 @@ exports.getUserGroup = function(req, res) {
             console.log(err);
             return;
         } else {
-
+            db.sql(connection, "SELECT * FROM T_UserGroupInfors", function(err, result) {
+                res.send({
+                    status: 0,
+                    msg: result.recordset
+                });
+            });
         }
     });
 };

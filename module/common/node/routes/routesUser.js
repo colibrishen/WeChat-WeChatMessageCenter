@@ -1,6 +1,13 @@
 var ctrlUser = require('../controller/ctrlUser.js');
 
 module.exports = function(app) {
-    app.get('/userManagement', ctrlUser.Index);
-    app.post('/userConnectDb', ctrlUser.ConnectDb);
+
+    //获取页面
+    app.get('/userManagement', ctrlUser.index);
+
+    //连接数据库
+    app.post('/userConnectDb', ctrlUser.connectDb);
+
+    //获取用户组
+    app.post('/getUserGroup', ctrlUser.getUserGroup);
 };
