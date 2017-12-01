@@ -5,7 +5,7 @@ var session = require('express-session');
 var post_argu = require('../../../../routes/post_argu.js');
 var crypto = require('crypto');
 var mssql = require("mssql");
-var db = require('../../../../routes/db.js')
+var db = require('../../../../routes/db.js');
 
 var dbParam = {};
 var connection = {};

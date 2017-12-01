@@ -40,6 +40,41 @@ exports.post_argu = function(res, method, args) {
     });
 };
 
+//提交参数
+exports.get_argu = function(res, method) {
+    request.get({
+        url: method,
+        json: true,
+        headers: {
+            "content-type": "application/json",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            res.json({
+                Data: null,
+                Status: -9999,
+                Message: error
+            });
+        } else {
+            if (!body.d) {
+                res.json({
+                    Data: null,
+                    Status: -9999,
+                    Message: body.Message
+                });
+            } else {
+                var result = JSON.parse(body.d);
+                res.json({
+                    Data: result.Data,
+                    Status: result.StatusCode,
+                    Message: result.Data
+                });
+            }
+
+        }
+    });
+};
+
 //获取路径
 exports.getpath = function(_path, method) {
     var pt = _path.split('\\');

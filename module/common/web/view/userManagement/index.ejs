@@ -5,556 +5,132 @@
 <head>
     <% include ../../../../../views/head %>
 
-        <title>Bootstrap Tree View</title>
-        <link href="./css/bootstrap.css" rel="stylesheet">
-        <!-- <link href="./css/bootstrap-treeview.css" rel="stylesheet"> -->
-        <style type="text/css" id="treeview1-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview1 {}
-            
-            .node-treeview1:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview2-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview2 {}
-            
-            .node-treeview2:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview3-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview3 {}
-            
-            .node-treeview3:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview4-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview4 {
-                color: #428bca;
-            }
-            
-            .node-treeview4:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview5-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview5 {
-                color: #428bca;
-            }
-            
-            .node-treeview5:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview6-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview6 {
-                color: #428bca;
-            }
-            
-            .node-treeview6:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview7-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview7 {
-                color: #428bca;
-                border: none;
-            }
-            
-            .node-treeview7:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview8-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview8 {
-                color: yellow;
-                background-color: purple;
-                border: none;
-            }
-            
-            .node-treeview8:not(.node-disabled):hover {
-                background-color: orange;
-            }
-        </style>
-        <style type="text/css" id="treeview9-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview9 {
-                color: yellow;
-                background-color: purple;
-                border: none;
-            }
-            
-            .node-treeview9:not(.node-disabled):hover {
-                background-color: orange;
-            }
-        </style>
-        <style type="text/css" id="treeview10-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview10 {
-                color: #428bca;
-            }
-            
-            .node-treeview10:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview-searchable-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview-searchable {}
-            
-            .node-treeview-searchable:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview-selectable-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview-selectable {}
-            
-            .node-treeview-selectable:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview-expandible-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview-expandible {}
-            
-            .node-treeview-expandible:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview-checkable-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview-checkable {}
-            
-            .node-treeview-checkable:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview-disabled-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview-disabled {}
-            
-            .node-treeview-disabled:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
-        <style type="text/css" id="treeview12-style">
-            .treeview .list-group-item {
-                cursor: pointer
-            }
-            
-            .treeview span.indent {
-                margin-left: 10px;
-                margin-right: 10px
-            }
-            
-            .treeview span.icon {
-                width: 12px;
-                margin-right: 5px
-            }
-            
-            .treeview .node-disabled {
-                color: silver;
-                cursor: not-allowed
-            }
-            
-            .node-treeview12 {}
-            
-            .node-treeview12:not(.node-disabled):hover {
-                background-color: #F5F5F5;
-            }
-        </style>
+        <body ng-app='userManagement' ng-controller='ctrlUserManagement' class="fixed-sidebar fixed-header">
 
-</head>
+            <div id="loading" class="ui-front loader ui-widget-overlay bg-white opacity-100">
+                <img src="./images/loader-dark.gif" alt="">
+            </div>
 
-<body ng-app='userManagement' ng-controller='ctrlUserManagement' class="fixed-sidebar fixed-header">
-
-    <div id="loading" class="ui-front loader ui-widget-overlay bg-white opacity-100">
-        <img src="./images/loader-dark.gif" alt="">
-    </div>
-
-    <div id="page-wrapper" class="demo-example">
-        <div id="page-sidebar">
-            <% include ../../../../../views/header %>
-                <% include ../../../../../views/menu %>
-        </div>
-        <!-- #page-sidebar -->
-
-        <div id="page-main">
-            <!-- 主页头 -->
-            <div id="page-main-wrapper">
-                <div id="page-header" class="clearfix">
-                    <div id="page-header-wrapper" class="clearfix">
-                        <div class="top-icon-bar dropdown">
-                            <a href="javascript:;" title="" class="user-ico clearfix" data-toggle="dropdown">
-                                <img width="36" src="./images/gravatar.jpg" alt="">
-                                <span>Horia Simon</span>
-                                <i class="glyph-icon icon-chevron-down"></i>
-                            </a>
-                            <ul class="dropdown-menu float-right">
-                                <li>
-                                    <a href="javascript:;" title="">
-                                        <i class="glyph-icon icon-signout font-size-13 mrg5R"></i>
-                                        <span class="font-bold">Logout</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <div id="page-wrapper" class="demo-example">
+                <div id="page-sidebar">
+                    <% include ../../../../../views/header %>
+                        <% include ../../../../../views/menu %>
                 </div>
-                <!-- #page-header -->
+                <!-- #page-sidebar -->
 
-                <div id="page-breadcrumb-wrapper">
-                    <!-- 面包屑 -->
-                    <div id="page-breadcrumb">
+                <div id="page-main">
+                    <!-- 主页头 -->
+                    <div id="page-main-wrapper">
+                        <div id="page-header" class="clearfix">
+                            <div id="page-header-wrapper" class="clearfix">
+                                <div class="top-icon-bar dropdown">
+                                    <a href="javascript:;" title="" class="user-ico clearfix" data-toggle="dropdown">
+                                        <img width="36" src="./images/gravatar.jpg" alt="">
+                                        <span>Horia Simon</span>
+                                        <i class="glyph-icon icon-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu float-right">
+                                        <li>
+                                            <a href="javascript:;" title="">
+                                                <i class="glyph-icon icon-signout font-size-13 mrg5R"></i>
+                                                <span class="font-bold">Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #page-header -->
 
-                        <!-- <a href="javascript:;" title="Dashboard">
+                        <div id="page-breadcrumb-wrapper">
+                            <!-- 面包屑 -->
+                            <div id="page-breadcrumb">
+
+                                <!-- <a href="javascript:;" title="Dashboard">
                             <i class="glyph-icon icon-dashboard"></i> 主页
                         </a>
                         <a href="javascript:;" title="Elements">
                             <i class="glyph-icon icon-laptop"></i> Elements
                         </a> -->
-                        <span class="current">
+                                <span class="current">
                                 <i class="glyph-icon icon-dashboard"></i> 用户管理
                         </span>
-                    </div>
-
-                </div>
-
-                <!-- 内容 -->
-                <div id="page-content">
-                    <div class="container">
-                        <div class="col-md-3">
-                            <div id="treeview-searchable" class="treeview">
-                                <ul class="list-group">
-                                    <li class="list-group-item node-treeview-searchable node-selected" data-nodeid="0" style="color:#FFFFFF;background-color:#428bca;"><span class="icon expand-icon glyphicon glyphicon-minus"></span><span class="icon node-icon"></span>Parent 1</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="1" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon expand-icon glyphicon glyphicon-plus"></span><span class="icon node-icon"></span>Child 1</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="4" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon glyphicon"></span><span class="icon node-icon"></span>Child 2</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="5" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon node-icon"></span>Parent 2</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="6" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon node-icon"></span>Parent 3</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="7" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon node-icon"></span>Parent 4</li>
-                                    <li class="list-group-item node-treeview-searchable" data-nodeid="8" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon node-icon"></span>Parent 5</li>
-                                </ul>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-3">
-                        <div class="example-code">
-                            <div class="accordion ui-accordion ui-widget ui-helper-reset" role="tablist">
-                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-1-header-0" aria-controls="ui-accordion-1-panel-0" aria-selected="true" tabindex="0">
-                                    <i class="glyph-icon icon-user font-blue float-left"></i>沈恩付</h3>
-                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-1-panel-0" aria-labelledby="ui-accordion-1-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
-                                    <div style="display: inline;">
-                                        <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
-                                        <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
+                        </div>
+
+                        <!-- 内容 -->
+                        <div id="page-content">
+                            <div class="container">
+                                <div class="col-md-3">
+                                    <div id="treeview-searchable" class="treeview">
+                                        <ul class="list-group">
+                                            <li class="list-group-item node-treeview-searchable node-selected" data-nodeid="0" style="color:#FFFFFF;background-color:#428bca;">
+                                                <span class="icon expand-icon glyphicon glyphicon-minus"></span>
+                                                <span class="icon node-icon">
+                                            </span> Parent 1</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="1" style="color:undefined;background-color:undefined;">
+                                                <span class="indent"></span><span class="icon expand-icon glyphicon glyphicon-plus"></span>
+                                                <span class="icon node-icon">
+                                            </span>Child 1</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="4" style="color:undefined;background-color:undefined;">
+                                                <span class="indent"></span><span class="icon glyphicon"></span>
+                                                <span class="icon node-icon">
+                                            </span>Child 2</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="5" style="color:undefined;background-color:undefined;">
+                                                <span class="icon glyphicon"></span><span class="icon node-icon">
+                                            </span>Parent 2</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="6" style="color:undefined;background-color:undefined;">
+                                                <span class="icon glyphicon"></span><span class="icon node-icon">
+                                            </span>Parent 3</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="7" style="color:undefined;background-color:undefined;">
+                                                <span class="icon glyphicon"></span><span class="icon node-icon">
+                                            </span>Parent 4</li>
+                                            <li class="list-group-item node-treeview-searchable" data-nodeid="8" style="color:undefined;background-color:undefined;">
+                                                <span class="icon glyphicon"></span><span class="icon node-icon">
+                                            </span> Parent 5</li>
+                                        </ul>
                                     </div>
                                 </div>
+                            </div>
 
-                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-1" aria-controls="ui-accordion-1-panel-1" aria-selected="false" tabindex="-1">
-                                    <i class="glyph-icon icon-user font-blue float-left"></i>邵佳伟</h3>
-                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-1" aria-labelledby="ui-accordion-1-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
-                                    Accordion content 2
-                                </div>
+                            <div class="col-md-3">
+                                <div class="example-code">
+                                    <div class="accordion ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-1-header-0" aria-controls="ui-accordion-1-panel-0" aria-selected="true" tabindex="0">
+                                            <i class="glyph-icon icon-user font-blue float-left"></i>沈恩付</h3>
+                                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-1-panel-0" aria-labelledby="ui-accordion-1-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+                                            <div style="display: inline;">
+                                                <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
+                                                <div><i class="glyph-icon icon-comments-o font-blue" style="display: inline;">消息</i></div>
+                                            </div>
+                                        </div>
 
-                                <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-2" aria-controls="ui-accordion-1-panel-2" aria-selected="false" tabindex="-1">
-                                    <i class="glyph-icon icon-user font-blue float-left"></i>小张</h3>
-                                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-2" aria-labelledby="ui-accordion-1-header-2" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
-                                    Accordion content 3
+                                        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-1" aria-controls="ui-accordion-1-panel-1" aria-selected="false" tabindex="-1">
+                                            <i class="glyph-icon icon-user font-blue float-left"></i>邵佳伟</h3>
+                                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-1" aria-labelledby="ui-accordion-1-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                            Accordion content 2
+                                        </div>
+
+                                        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-1-header-2" aria-controls="ui-accordion-1-panel-2" aria-selected="false" tabindex="-1">
+                                            <i class="glyph-icon icon-user font-blue float-left"></i>小张</h3>
+                                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-1-panel-2" aria-labelledby="ui-accordion-1-header-2" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                            Accordion content 3
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
+                        </div>
+                        <!-- #page-content -->
+                    </div>
+                    <!-- #page-main -->
                 </div>
-                <!-- #page-content -->
+                <!-- #page-main-wrapper -->
             </div>
-            <!-- #page-main -->
-        </div>
-        <!-- #page-main-wrapper -->
-    </div>
-    <!-- #page-wrapper -->
-    <% include ../../../../../views/all_js %>
-        <script src='./common/web/controller/ctrlUser.js'></script>
-</body>
+            <!-- #page-wrapper -->
+            <% include ../../../../../views/all_js %>
+                <script src='./common/web/controller/ctrlUser.js'></script>
+        </body>
 
 </html>
