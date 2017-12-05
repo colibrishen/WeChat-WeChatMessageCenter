@@ -2,7 +2,7 @@ var request = require('request');
 var config = require(__dirname + '/paramConfig.js');
 var errorcode = require(__dirname + '/error.js');
 var path = require('path');
-
+var paramConfig = require('./modelInfor.js');
 
 //提交参数
 exports.post_argu = function(res, method, args) {
@@ -41,7 +41,7 @@ exports.post_argu = function(res, method, args) {
 };
 
 //提交参数
-exports.get_argu = function(res, method) {
+exports.get_weChat_argu = function(method, cb) {
     request.get({
         url: method,
         json: true,
@@ -49,32 +49,11 @@ exports.get_argu = function(res, method) {
             "content-type": "application/json",
         }
     }, function(error, response, body) {
-        if (error) {
-            res.json({
-                Data: null,
-                Status: -9999,
-                Message: error
-            });
-        } else {
-            if (!body.d) {
-                res.json({
-                    Data: null,
-                    Status: -9999,
-                    Message: body.Message
-                });
-            } else {
-                var result = JSON.parse(body.d);
-                res.json({
-                    Data: result.Data,
-                    Status: result.StatusCode,
-                    Message: result.Data
-                });
-            }
-
+        if (typeof cb == 'function') {
+            cb(error, response, body);
         }
     });
 };
-
 //获取路径
 exports.getpath = function(_path, method) {
     var pt = _path.split('\\');
