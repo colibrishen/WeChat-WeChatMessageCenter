@@ -41,6 +41,42 @@ exports.post_argu = function(res, method, args) {
 };
 
 //提交参数
+exports.post_weChatMsg = function(res, method, args) {
+    request.post({
+        url: method,
+        json: true,
+        headers: {
+            "content-type": "application/json",
+        },
+        body: args,
+    }, function(error, response, body) {
+        if (error) {
+            res.json({
+                errcode: null,
+                Status: -9999,
+                Message: error
+            });
+        } else {
+            if (!body.errcode) {
+                res.json({
+                    errcode: body.errcode,
+                    errmsg: body.errmsg,
+                    invaliduser: body.invaliduser
+                });
+            } else {
+                var result = JSON.parse(body);
+                res.json({
+                    errcode: body.errcode,
+                    errmsg: body.errmsg,
+                    sendUser: body.invaliduser
+                });
+            }
+
+        }
+    });
+};
+
+//提交参数
 exports.get_weChat_argu = function(method, cb) {
     request.get({
         url: method,

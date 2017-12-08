@@ -14,6 +14,7 @@ var dbParam = {};
 var connection = {};
 var getDayInfor = 1000 * 60 * 60 * 24;
 var weChatAccessToken = null;
+var msgBody = {};
 
 var getWeChatAccessToken = function() {
     var method = paramConfig.msgHostName + '/cgi-bin/gettoken?corpid=' + paramConfig.weChatSecret;
@@ -31,7 +32,6 @@ var getWeChatAccessToken = function() {
         } else {
             if (body.errcode != 0) {
                 data = {
-
                     Data: null,
                     Status: body.errcode,
                     Message: body.errmsg
@@ -50,7 +50,22 @@ setInterval(function() {
 
 getWeChatAccessToken();
 
-exports.getAccessToken = function(req, res) {
-    var method = paramConfig.msgHostName + '/cgi-bin/gettoken?corpid=' + paramConfig.weChatSecret;
-    post_argu.get_weChat_argu(res, method);
+// exports.getAccessToken = function(req, res) {
+//     var method = paramConfig.msgHostName + '/cgi-bin/gettoken?corpid=' + paramConfig.weChatSecret;
+//     post_argu.get_weChat_argu(res, method);
+// };
+
+exports.sendMessage = function(req, res) {
+    var method = paramConfig.msgHostName + '/cgi-bin/message/send?access_token=' + weChatAccessToken;
+    var model = req.body;
+    msgBody = {
+        touser: model.UserName,
+        msgtype: model.MsgType,
+        agentid: 1,
+        text: {
+            content: model.Content
+        },
+        safe: 0
+    };
+    post_argu.post_weChatMsg(res, method, msgBody);
 };
