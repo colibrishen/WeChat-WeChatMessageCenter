@@ -64,7 +64,7 @@ exports.post_weChatMsg = function(res, method, args) {
                     invaliduser: body.invaliduser
                 });
             } else {
-                var result = JSON.parse(body);
+                var result = body;
                 res.json({
                     errcode: body.errcode,
                     errmsg: body.errmsg,
