@@ -1,8 +1,8 @@
 var request = require('request');
 var config = require(__dirname + '/paramConfig.js');
+var gParamConfig = require('./gParamConfig.js');
 var errorcode = require(__dirname + '/error.js');
 var path = require('path');
-var paramConfig = require('./modelInfor.js');
 
 //提交参数
 exports.post_argu = function(res, method, args) {
@@ -39,6 +39,76 @@ exports.post_argu = function(res, method, args) {
         }
     });
 };
+
+//获取Access Token
+exports.get_weChat_accessToken = function(res, method)
+{
+    request.post({
+        url: method,
+        json: true,
+        headers: {
+            "content-type": "application/json",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            res.json({
+                errcode: null,
+                errmsg: -9999
+            });
+        } else {
+            if (!body.errcode) {
+                gParamConfig.weChatAccessToken = body.access_token;
+                res.json({
+                    errcode: body.errcode,
+                    errmsg: body.errmsg
+                });
+            } else {
+                var result = body;
+                res.json({
+                    errcode: body.errcode,
+                    errmsg: body.errmsg
+                });
+            }
+        }
+    });
+}
+
+exports.get_weChatMsg = function(res, method, type){
+    request.post({
+        url: method,
+        json: true,
+        headers: {
+            "content-type": "application/json",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            res.json({
+                errcode: null,
+                Status: -9999,
+                Message: error
+            });
+        } else {
+            if (!body.errcode) {
+                if(type==0)
+                {
+                    res.json({
+                        errcode: body.errcode,
+                        errmsg: body.errmsg,
+                        department: body.department
+                    });
+                }
+            } else {
+                var result = body;
+                res.json({
+                    errcode: body.errcode,
+                    errmsg: body.errmsg,
+                    sendUser: body.invaliduser
+                });
+            }
+
+        }
+    });
+}
 
 //提交参数
 exports.post_weChatMsg = function(res, method, args) {
@@ -90,6 +160,7 @@ exports.get_weChat_argu = function(method, cb) {
         }
     });
 };
+
 //获取路径
 exports.getpath = function(_path, method) {
     var pt = _path.split('\\');
