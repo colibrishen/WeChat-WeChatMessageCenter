@@ -1,7 +1,7 @@
 var request = require('request');
 var config = require(__dirname + '/paramConfig.js');
 var gParamConfig = require('./gParamConfig.js');
-var errorcode = require(__dirname + '/error.js');
+var errorCode = require('./error.js');
 var path = require('path');
 
 //提交参数
@@ -109,10 +109,9 @@ exports.get_weChatMsg = function(res, method, type) {
                 res.json({
                     errcode: body.errcode,
                     errmsg: body.errmsg,
-                    sendUser: body.invaliduser
+                    errInfor: errorCode.getErrorInfor(body.errcode)
                 });
             }
-
         }
     });
 };
