@@ -56,21 +56,35 @@ exports.updateAccessToken = function(req, res) {
 };
 
 //获取组织架构 tpye：0 
-exports.getOrganization = function(req, res){
+exports.getOrganization = function(req, res) {
     var id = req.body;
-    var method = paramConfig.msgHostName + '/cgi-bin/department/list?access_token=' + gParamConfig.weChatAccessToken + '&id=' + id;
+    var method = paramConfig.msgHostName +
+        '/cgi-bin/department/list?access_token=' + gParamConfig.weChatAccessToken +
+        '&id=' + id;
     post_argu.get_weChatMsg(res, method, 0);
 };
 
 //获取部门成员
-exports.getDepartmentUsers= function(req, res){
+exports.getDepartmentUsers = function(req, res) {
     var departementInfor = req.body;
-    var method = paramConfig.msgHostName + '/cgi-bin/user/simplelist?access_token=' 
-                + gParamConfig.weChatAccessToken + '&department_id=' 
-                + departmentId + '';
-    post_argu.get_weChatMsg(res, method, 0);
+    var method = paramConfig.msgHostName +
+        '/cgi-bin/user/simplelist?access_token=' + gParamConfig.weChatAccessToken +
+        '&department_id=' + departementInfor.departmentId +
+        '&fetch_child=' + departementInfor.fetchChild;
+    console.log(method);
+    post_argu.get_weChatMsg(res, method, 1);
 };
 
+//获取部门成员详情
+exports.getDepartmentUsersInfor = function(req, res) {
+    var departementInfor = req.body;
+    var method = paramConfig.msgHostName +
+        '/cgi-bin/user/list?access_token=' + gParamConfig.weChatAccessToken +
+        '&department_id=' + departementInfor.departmentId +
+        '&fetch_child=' + departementInfor.fetchChild;
+    console.log(method);
+    post_argu.get_weChatMsg(res, method, 1);
+};
 
 //发送消息
 exports.sendMessage = function(req, res) {
@@ -87,4 +101,3 @@ exports.sendMessage = function(req, res) {
     };
     post_argu.post_weChatMsg(res, method, msgBody);
 };
-

@@ -35,14 +35,12 @@ exports.post_argu = function(res, method, args) {
                     Message: result.Data
                 });
             }
-
         }
     });
 };
 
 //获取Access Token
-exports.get_weChat_accessToken = function(res, method)
-{
+exports.get_weChat_accessToken = function(res, method) {
     request.post({
         url: method,
         json: true,
@@ -71,9 +69,10 @@ exports.get_weChat_accessToken = function(res, method)
             }
         }
     });
-}
+};
 
-exports.get_weChatMsg = function(res, method, type){
+//获取企业号信息
+exports.get_weChatMsg = function(res, method, type) {
     request.post({
         url: method,
         json: true,
@@ -89,13 +88,21 @@ exports.get_weChatMsg = function(res, method, type){
             });
         } else {
             if (!body.errcode) {
-                if(type==0)
-                {
-                    res.json({
-                        errcode: body.errcode,
-                        errmsg: body.errmsg,
-                        department: body.department
-                    });
+                switch (type) {
+                    case 0:
+                        res.json({
+                            errcode: body.errcode,
+                            errmsg: body.errmsg,
+                            department: body.department
+                        });
+                        break;
+                    case 1:
+                        res.json({
+                            errcode: body.errcode,
+                            errmsg: body.errmsg,
+                            userlist: body.userlist
+                        });
+                        break;
                 }
             } else {
                 var result = body;
@@ -108,7 +115,7 @@ exports.get_weChatMsg = function(res, method, type){
 
         }
     });
-}
+};
 
 //提交参数
 exports.post_weChatMsg = function(res, method, args) {

@@ -11,6 +11,9 @@ module.exports = function(app) {
     //获取部门成员
     app.post('/getDepartmentUsers', ctrlMsgCenter.getDepartmentUsers);
 
+    //获取部门成员详情
+    app.post('/getDepartmentUsersInfor', ctrlMsgCenter.getDepartmentUsersInfor);
+
     //发送信息
     app.post('/sendMessage', ctrlMsgCenter.sendMessage);
 
