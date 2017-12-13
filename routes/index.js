@@ -1,5 +1,6 @@
 var fs = require("fs");
 var path = require("path");
+var logger = require('./logger.js');
 
 /* GET home page. */
 module.exports = function(app) {
@@ -8,6 +9,6 @@ module.exports = function(app) {
     fs.readdirSync(module_path).forEach(function(fileInfor) {
         routes[fileInfor] = require('../module/' + fileInfor + '/node/routes.js');
         routes[fileInfor](app);
-        console.log('路由' + fileInfor + '加载成功！');
+        logger.info('路由' + fileInfor + '加载成功！');
     });
 };

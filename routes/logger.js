@@ -1,24 +1,26 @@
 var paramConfig = require('./paramConfig');
-
 var log4js = require('log4js');
+
 log4js.configure({
-    appenders: [
-        { type: 'console' },
-        {
+    appenders: {
+        ruleConsole: { type: 'console' },
+        ruleFile: {
             type: 'dateFile',
             filename: paramConfig.logPath,
-            pattern: '_yyyy-MM-dd',
+            pattern: 'yyyy-MM-dd.log',
             maxLogSize: 1024,
-            alwaysIncludePattern: false,
-            backups: 4,
-            category: 'normal'
+            numBackups: 4,
+            category: 'normal',
+            alwaysIncludePattern: false
         }
-    ],
+    },
+    categories: {
+        default: { appenders: ['ruleConsole', 'ruleFile'], level: 'info' }
+    },
     replaceConsole: true
 });
 
 var logger = log4js.getLogger('normal');
-logger.setLevel('info');
 exports.trace = function(msg) {
     logger.trace(msg);
 };

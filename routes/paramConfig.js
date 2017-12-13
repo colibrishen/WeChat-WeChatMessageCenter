@@ -1,6 +1,6 @@
 module.exports = {
     //日志路径
-    logPath: './logs/access.log',
+    logPath: '../MsgCenterlogs/access.log',
 
     //node发布端口
     port: 8080,

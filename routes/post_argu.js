@@ -3,6 +3,7 @@ var config = require(__dirname + '/paramConfig.js');
 var gParamConfig = require('./gParamConfig.js');
 var errorCode = require('./error.js');
 var path = require('path');
+var logger = require('./logger.js');
 
 //提交参数
 exports.post_argu = function(res, method, args) {
@@ -129,25 +130,28 @@ exports.post_weChatMsg = function(res, method, args) {
         if (error) {
             res.json({
                 errcode: null,
-                Status: -9999,
-                Message: error
+                errmsg: -9999,
+                invaliduser: error
             });
         } else {
-            if (!body.errcode) {
-                res.json({
-                    errcode: body.errcode,
-                    errmsg: body.errmsg,
-                    invaliduser: body.invaliduser
-                });
-            } else {
-                var result = body;
-                res.json({
-                    errcode: body.errcode,
-                    errmsg: body.errmsg,
-                    sendUser: body.invaliduser
-                });
+            try {
+                if (!body.errcode) {
+                    res.json({
+                        errcode: body.errcode,
+                        errmsg: body.errmsg,
+                        invaliduser: body.invaliduser
+                    });
+                } else {
+                    var result = body;
+                    res.json({
+                        errcode: body.errcode,
+                        errmsg: body.errmsg,
+                        sendUser: body.invaliduser
+                    });
+                }
+            } catch (err) {
+                logger.info('post_weChatMsg(), catch: ' + err);
             }
-
         }
     });
 };
