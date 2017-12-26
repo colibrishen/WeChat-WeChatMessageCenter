@@ -1,16 +1,19 @@
 var common = {};
-common.routesMain = require('./routes/routesMain');
-common.routesUser = require('./routes/routesUser');
-common.routesAccount = require('./routes/routesAccount');
-common.routesMsgCenter = require('./routes/routesMsgCenter');
+common.routeMain = require('./routes/routeMain');
+common.routeUser = require('./routes/routeUser');
+common.routeAccount = require('./routes/routeAccount');
+common.routeMsgCenter = require('./routes/routeMsgCenter');
+common.routeLogin = require('./routes/routeLogin');
 
 module.exports = function(app) {
 
-    common.routesMain(app);
+    common.routeMain(app);
 
-    common.routesUser(app);
+    common.routeUser(app);
 
-    common.routesAccount(app);
+    common.routeAccount(app);
 
-    common.routesMsgCenter(app);
+    common.routeMsgCenter(app);
+
+    common.routeLogin(app);
 };
