@@ -32,7 +32,7 @@ app.controller('ctrlUserManagement', function($http, $scope) {
         }
     });
 
-    //?????
+    //get User group
     $scope.getUserGp = function(objct, gpId) {
         var szTemp = [];
         angular.forEach(objct, function(gpInfor, index, arry) {

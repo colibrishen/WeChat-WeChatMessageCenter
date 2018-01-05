@@ -5,6 +5,7 @@ common.routeAccount = require('./routes/routeAccount');
 common.routeMsgCenter = require('./routes/routeMsgCenter');
 common.routeLogin = require('./routes/routeLogin');
 
+
 module.exports = function(app) {
 
     common.routeMain(app);

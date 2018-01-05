@@ -1,104 +1,67 @@
-var path = require('path');
-var request = require('request');
-var crypto = require('crypto');
-var session = require('express-session');
-const _ = require('underscore');
-const Guid = require('guid')
-var config = require('../../../../routes/gParamConfig.js');
-var errorcode = require('../../../../routes/error.js');
-var post_argu = require('../../../../routes/post_argu.js');
+var app = angular.module('login', []);
 
-
-exports.Index = function(req, res) {
-    res.render(res.render(path.resolve(__dirname, '../../web/view/login/index')));
-};
-
-//获取IP
-
-exports.UserLogin = function(req, res) {
-    var name = req.body.userNo;
-    var md5 = crypto.createHash('md5'),
-        pwd = 1;
-    var pwd = md5.update(req.body.password).digest('hex');
-    var storage = req.body.storage
-    var method = post_argu.getpath(__filename, 'UserLogin');
-    request.post({
-        url: method,
-        body: { userNo: name, password: pwd },
-        json: true,
-        headers: {
-            "content-type": "application/json",
+app.controller('ctrlLogin', function($scope, $http) {
+    $scope.Database = {
+        user: 'sa',
+        password: '1`q',
+        server: '192.168.30.66',
+        database: 'ZGOfficeAuto',
+        option: {
+            encrpt: true
         },
-    }, function(error, response, body) {
-        if (body == 'null') {
-            res.json({
-                Status: 1,
-                Message: "用户名或密码错误！"
-            })
-        } else {
-            if (error) {
-                res.json({
-                    Status: 200,
-                    Message: errorcode["Return_Code" + 200]
-                })
+        pool: {
+            min: 0,
+            max: 10,
+            idleTimeoutMillis: 30000
+        }
+    };
+
+    $scope.user = {
+        Name: '',
+        Password: ''
+    };
+
+    $scope.checkuser = function() {
+        let stroage = localStorage.userInfo ? localStorage.userInfo : '{}';
+        $http.post('/userLogin', { userNo: $scope.user.Name, password: $scope.user.Password, storage: JSON.parse(stroage) }).success(function(data) {
+            if (data.Status == 0) {
+                window.localStorage.setItem('userInfo', JSON.stringify(data.Data))
+                window.location = '/homeERP';
             } else {
-                var session = require('express-session');
-                // req.session.user = JSON.parse(body.d);
-                console.log(body)
-                req.session.infor = JSON.parse(body.d);
-                if (req.session.infor.StatusCode == 0) {
-                    var session = require('express-session');
-                    req.session.user = JSON.parse(body.d);
-                    let userId = req.session.user.Data.UserId
-                    let guid = (storage.userId == userId && storage != '' ? storage.guid : Guid.create())
-                    res.json({
-                        Status: 0,
-                        Data: { guid: guid, userId: userId },
-                        Message: "登录成功！"
-                    })
-                    global.ws.clients.forEach( //function each(client) {
-                        //if (client.readyState === WebSocket.OPEN) {
-                        //  client.send(guid);
-                        //}
-                        client => {
-                            client.send(JSON.stringify({ guid: guid, userId: req.session.user.Data.UserId, method: 'loginOut' }))
-                        }
-                    )
+                if (data.Status == 2002) {
+                    $.gritter.add({
+                        position: 'bottom-right',
+                        title: '该账户已被禁用！'
+                    });
                 } else {
-                    res.json({
-                        Status: req.session.infor.StatusCode,
-                        Message: "登录失败！"
-                    })
+                    if (data.Status == 2001) {
+                        $.gritter.add({
+                            position: 'bottom-right',
+                            title: '密码错误！'
+                        });
+                    } else {
+                        if (data.Status == -1) {
+                            $.gritter.add({
+                                position: 'bottom-right',
+                                title: '未找到该账户！'
+                            });
+                        } else if (data.Status == 2003) {
+                            $.gritter.add({
+                                position: 'bottom-right',
+                                title: '用户登录失败！'
+                            });
+                        }
+
+                    }
                 }
 
             }
+        });
+    };
+
+    $('body').on('keypress', function(data) {
+        if (data.keyCode == 13) {
+            $scope.checkuser();
         }
-    })
-
-};
-
-exports.logout = function(req, res) {
-    req.session.user = null;
-    req.session.selectedStorageNo = null;
-    req.session.selectedStorage = null;
-    req.session.selectedOutbound = null;
-    req.session.getPriceId = null;
-    res.redirect('/');
-}
-
-
-function checkIP(IP, UserID) {
-    for (let i = 0; i < global.Client.length; i++) {
-        if (global.Client[i].UserID == UserID && global.Client[i].IP != IP) {
-            global.ws.clients.forEach(function each(client) {
-                if (_.indexOf(global.Client[i].ClientId, client._ultron.id) > -1) {
-                    client.send(JSON.stringify({
-                        msg: "你的账户已在其他地方登录!"
-                    }));
-                    global.Client.splice(i, 1);
-                    return;
-                }
-            })
-        }
-    }
-}
+    });
+});
