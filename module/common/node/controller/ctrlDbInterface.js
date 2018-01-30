@@ -52,16 +52,14 @@ exports.getUserGroup = function(req, res) {
     });
 };
 
-exports.userLogin = function(loginInfor) {
+exports.userLogin = function(loginInfor, callback) {
     connection = new mssql.ConnectionPool(dbParam, function(err) {
         if (err) {
             console.log(err);
             return;
         } else {
-            db.sql(connection, "SELECT * FROM T_UserInfors", function(err, result) {
-
-                return result.recordset;
-
+            db.sql(connection, "SELECT * FROM T_UserInfors where User_No = '" + loginInfor.userName + "'", function(err, result) {
+                callback && callback(result.recordset);
             });
         }
     });

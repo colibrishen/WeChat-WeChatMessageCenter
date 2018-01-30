@@ -14,7 +14,7 @@ var logger = require('../../../../routes/logger.js');
 //定义
 var dbParam = {};
 var connection = {};
-var getDayInfor = 1000 * 60;
+var getDayInfor = 1000 * 60 * 10;
 var msgBody = {};
 
 var getWeChatAccessToken = function() {
@@ -105,6 +105,6 @@ exports.sendMessage = function(req, res) {
         },
         safe: 0
     };
-    logger.info('sendMessage()->Access Token : ' + gParamConfig.weChatAccessToken + ', url : ' + method + ', body ：' + msgBody);
+    logger.info('sendMessage() url : ' + method + ', body ：' + JSON.stringify(msgBody));
     post_argu.post_weChatMsg(res, method, msgBody);
 };

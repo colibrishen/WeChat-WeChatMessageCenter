@@ -18,62 +18,14 @@ exports.UserLogin = function(req, res) {
     var pwd = md5.update(req.body.password).digest('hex');
     var storage = req.body.storage
     var model = { userName: name, password: pwd };
-    var message = dbInterface.userLogin(model);
-
-    // var method = post_argu.getpath(__filename, 'UserLogin');
-    // request.post({
-    //     url: method,
-    //     body: { userNo: name, password: pwd },
-    //     json: true,
-    //     headers: {
-    //         "content-type": "application/json",
-    //     },
-    // }, function(error, response, body) {
-    //     if (body == 'null') {
-    //         res.json({
-    //             Status: 1,
-    //             Message: "用户名或密码错误！"
-    //         })
-    //     } else {
-    //         if (error) {
-    //             res.json({
-    //                 Status: 200,
-    //                 Message: errorcode["Return_Code" + 200]
-    //             })
-    //         } else {
-    //             var session = require('express-session');
-    //             // req.session.user = JSON.parse(body.d);
-    //             console.log(body)
-    //             req.session.infor = JSON.parse(body.d);
-    //             if (req.session.infor.StatusCode == 0) {
-    //                 var session = require('express-session');
-    //                 req.session.user = JSON.parse(body.d);
-    //                 let userId = req.session.user.Data.UserId
-    //                 let guid = (storage.userId == userId && storage != '' ? storage.guid : Guid.create())
-    //                 res.json({
-    //                     Status: 0,
-    //                     Data: { guid: guid, userId: userId },
-    //                     Message: "登录成功！"
-    //                 })
-    //                 global.ws.clients.forEach( //function each(client) {
-    //                     //if (client.readyState === WebSocket.OPEN) {
-    //                     //  client.send(guid);
-    //                     //}
-    //                     client => {
-    //                         client.send(JSON.stringify({ guid: guid, userId: req.session.user.Data.UserId, method: 'loginOut' }))
-    //                     }
-    //                 )
-    //             } else {
-    //                 res.json({
-    //                     Status: req.session.infor.StatusCode,
-    //                     Message: "登录失败！"
-    //                 })
-    //             }
-
-    //         }
-    //     }
-    // })
-
+    dbInterface.userLogin(model, function(val) {
+        var param = val;
+        if (pwd == param.User_Password) {
+            res.json("Ok");
+        } else {
+            res.json("Error");
+        }
+    });
 };
 
 exports.logout = function(req, res) {
