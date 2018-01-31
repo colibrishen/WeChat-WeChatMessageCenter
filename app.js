@@ -54,5 +54,5 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-global.Webservice = 'http://' + paramConfig.webIP + ':' + paramConfig.webPort + '/Module';
+global.Webservice = 'http://' + paramConfig.webIP + ':' + paramConfig.webPort + '/module';
 module.exports = app;

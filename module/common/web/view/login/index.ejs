@@ -6,55 +6,61 @@
     <% include ../../../../../views/head %>
 </head>
 
-<body ng-app='login' ng-controller='ctrlLogin'>
-    <img src="./images/login-bg.png" class="login-img" alt="">
-    <div class="ui-widget-overlay bg-black opacity-60"></div>
-    <div class="pad20A mrg25T">
-        <div class="row mrg25T col-md-4 center-margin">
-            <div class="ui-dialog modal-dialog mrg25T" id="login-form" style="position: relative !important;">
-                <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-                    <span class="ui-dialog-title">登入</span>
-                </div>
-                <div class="pad20A pad0B ui-dialog-content ui-widget-content">
-                    <div class="form-row">
-                        <div class="form-label col-md-2">
-                            <label for="">
+<body>
+    <div id="app1">
+        <img src="./images/login-bg.png" class="login-img" alt="">
+        <div class="ui-widget-overlay bg-black opacity-60"></div>
+        <div class="pad20A mrg25T">
+            <div class="row mrg25T col-md-4 center-margin">
+                <div class="ui-dialog modal-dialog mrg25T" id="login-form" style="position: relative !important;">
+                    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                        <span class="ui-dialog-title">登入</span>
+                    </div>
+                    <div class="pad20A pad0B ui-dialog-content ui-widget-content">
+                        <div class="form-row">
+                            <div class="form-label col-md-2">
+                                <label for="">
                                     用户名:
                                 </label>
-                        </div>
-                        <div class="form-input col-md-10">
-                            <div class="form-input-icon">
-                                <i class="glyph-icon icon-user ui-state-default"></i>
-                                <input placeholder="UserName" type="text" id="username" ng-model="user.Name">
+                            </div>
+                            <div class="form-input col-md-10">
+                                <div class="form-input-icon">
+                                    <i class="glyph-icon icon-user ui-state-default"></i>
+                                    <input placeholder="UserName" type="text" id="username" v-model="user.Name">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-label col-md-2">
-                            <label for="">
+                        <div class="form-row">
+                            <div class="form-label col-md-2">
+                                <label for="">
                                     密码:
                                 </label>
-                        </div>
-                        <div class="form-input col-md-10">
-                            <div class="form-input-icon">
-                                <i class="glyph-icon icon-unlock-alt ui-state-default"></i>
-                                <input placeholder="Password" type="password" id="password" ng-model="user.Password">
+                            </div>
+                            <div class="form-input col-md-10">
+                                <div class="form-input-icon">
+                                    <i class="glyph-icon icon-unlock-alt ui-state-default"></i>
+                                    <input placeholder="Password" type="password" id="password" v-model="user.Password">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="ui-dialog-buttonpane text-center">
-                    <button type="submit" class="btn large primary-bg text-transform-upr font-bold font-size-11 radius-all-4" id="demo-form-valid" title="Validate!" ng-click="checkuser()">
+                    <div>
+                        <p>{{ errorMsg }}</p>
+                    </div>
+                    <div class="ui-dialog-buttonpane text-center">
+                        <button type="submit" class="btn large primary-bg text-transform-upr font-bold font-size-11 radius-all-4" id="demo-form-valid" title="Validate!" v-on:click="userlogin">
                             <span class="button-content">
                                 登入
                             </span>
                         </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <% include ../../../../../views/all_js %>
-        <script src='./common/web/controller/ctrlLogin.js'></script>
+        <!-- <script src='./common/web/controller/ctrlLogin.js'></script> -->
+        <script src='./common/web/controller/ctrlLogin1.js'></script>
         <% include ../../../../../views/copyright %>
 </body>
 

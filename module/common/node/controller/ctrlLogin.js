@@ -16,14 +16,14 @@ exports.UserLogin = function(req, res) {
     var md5 = crypto.createHash('md5'),
         pwd = 1;
     var pwd = md5.update(req.body.password).digest('hex');
-    var storage = req.body.storage
+    var storage = req.body.storage;
     var model = { userName: name, password: pwd };
     dbInterface.userLogin(model, function(val) {
-        var param = val;
-        if (pwd == param.User_Password) {
-            res.json("Ok");
+        var userPwd = val[0].User_Password;
+        if (pwd == userPwd) {
+            res.json({ Status: 0 });
         } else {
-            res.json("Error");
+            res.json({ Status: -1 });
         }
     });
 };
