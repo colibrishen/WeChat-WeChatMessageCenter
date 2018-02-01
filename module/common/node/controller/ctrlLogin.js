@@ -19,10 +19,18 @@ exports.UserLogin = function(req, res) {
     var storage = req.body.storage;
     var model = { userName: name, password: pwd };
     dbInterface.userLogin(model, function(val) {
-        var userPwd = val[0].User_Password;
-        if (pwd == userPwd) {
-            res.json({ Status: 0 });
-        } else {
+        try {
+            if (val.length > 0) {
+                var userPwd = val[0].User_Password;
+                if (pwd == userPwd) {
+                    res.json({ Status: 0 });
+                } else {
+                    res.json({ Status: -1 });
+                }
+            } else {
+                res.json({ Status: -1 });
+            }
+        } catch (error) {
             res.json({ Status: -1 });
         }
     });

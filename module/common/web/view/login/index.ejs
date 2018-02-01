@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div id="app1">
+    <div id="vueLogin">
         <img src="./images/login-bg.png" class="login-img" alt="">
         <div class="ui-widget-overlay bg-black opacity-60"></div>
         <div class="pad20A mrg25T">
@@ -19,9 +19,7 @@
                     <div class="pad20A pad0B ui-dialog-content ui-widget-content">
                         <div class="form-row">
                             <div class="form-label col-md-2">
-                                <label for="">
-                                    用户名:
-                                </label>
+                                <label> 用户名:</label>
                             </div>
                             <div class="form-input col-md-10">
                                 <div class="form-input-icon">
@@ -32,9 +30,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-label col-md-2">
-                                <label for="">
-                                    密码:
-                                </label>
+                                <label> 密码:</label>
                             </div>
                             <div class="form-input col-md-10">
                                 <div class="form-input-icon">
@@ -43,9 +39,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <p>{{ errorMsg }}</p>
+                        <div>
+                            <label class="font-gray-dark">{{ errorMsg }}</label>
+                        </div>
                     </div>
                     <div class="ui-dialog-buttonpane text-center">
                         <button type="submit" class="btn large primary-bg text-transform-upr font-bold font-size-11 radius-all-4" id="demo-form-valid" title="Validate!" v-on:click="userlogin">
@@ -59,8 +55,7 @@
         </div>
     </div>
     <% include ../../../../../views/all_js %>
-        <!-- <script src='./common/web/controller/ctrlLogin.js'></script> -->
-        <script src='./common/web/controller/ctrlLogin1.js'></script>
+        <script src='./common/web/controller/ctrlLogin.js'></script>
         <% include ../../../../../views/copyright %>
 </body>
 

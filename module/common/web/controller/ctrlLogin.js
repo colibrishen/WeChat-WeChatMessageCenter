@@ -1,53 +1,37 @@
-var app = angular.module('login', []);
-
-app.controller('ctrlLogin', function($scope, $http) {
-    $scope.Database = {
-        user: 'sa',
-        password: '1`q',
-        server: '192.168.30.66',
-        database: 'ZGOfficeAuto',
-        option: {
-            encrpt: true
+var app = new Vue({
+    el: '#vueLogin',
+    data: {
+        errorMsg: '消息中心',
+        database: {
+            user: 'sa',
+            password: '1`q',
+            server: '192.168.30.66',
+            database: 'ZGOfficeAuto',
+            option: {
+                encrpt: true
+            },
+            pool: {
+                min: 0,
+                max: 10,
+                idleTimeoutMillis: 30000
+            }
         },
-        pool: {
-            min: 0,
-            max: 10,
-            idleTimeoutMillis: 30000
+        user: {
+            Name: '',
+            Password: ''
         }
-    };
-
-    $scope.user = {
-        Name: '',
-        Password: ''
-    };
-
-    $scope.errorMsg = '';
-
-    $scope.checkuser = function() {
-        //let stroage = localStorage.userInfo ? localStorage.userInfo : '{}';
-        $http.post('/userLogin', { userNo: $scope.user.Name, password: $scope.user.Password }).success(function(data) {
-            if (data.Status == 0) {
-                window.localStorage.setItem('userInfo', JSON.stringify(data.Data))
-                window.location = '/homeERP';
-            } else {
-                if (data.Status == -1) {
-                    $.gritter.add({
-                        position: 'bottom-right',
-                        title: '该账户已被禁用！'
-                    });
+    },
+    methods: {
+        userlogin: function() {
+            axios.post('/userLogin', { userNo: this.user.Name, password: this.user.Password }).then(res => {
+                if (res.data.Status == 0) {
+                    window.location = '/main';
                 } else {
-                    if (data.Status == -1) {
-                        errorMsg = "用户名或密码错误！";
+                    if (res.data.Status == -1) {
+                        this.errorMsg = "用户名或密码错误！";
                     }
                 }
-
-            }
-        });
-    };
-
-    $('body').on('keypress', function(data) {
-        if (data.keyCode == 13) {
-            $scope.checkuser();
+            });
         }
-    });
+    }
 });

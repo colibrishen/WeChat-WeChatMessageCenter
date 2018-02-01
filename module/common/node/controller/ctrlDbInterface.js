@@ -64,3 +64,16 @@ exports.userLogin = function(loginInfor, callback) {
         }
     });
 };
+
+exports.getDepartment = function(callback) {
+    connection = new mssql.ConnectionPool(dbParam, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            db.sql(connection, "SELECT * FROM T_Department", function(err, result) {
+                callback && callback(result.recordset);
+            });
+        }
+    });
+};
