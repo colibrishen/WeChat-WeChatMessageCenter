@@ -20,5 +20,16 @@ exports.getDepartment = function(req, res) {
             res.json({ Status: -1 });
         }
     });
+};
 
+exports.getAccountInfor = function(req, res) {
+    dbInterface.getAccountInfor(req.body.id, val => {
+        try {
+            if (val.length > 0) {
+                res.json({ Status: 0, LstData: val });
+            }
+        } catch (error) {
+            res.json({ Status: -1 });
+        }
+    });
 };

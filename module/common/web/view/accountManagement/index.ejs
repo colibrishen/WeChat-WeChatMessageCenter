@@ -72,44 +72,18 @@
                                         <span>部门</span>
                                     </h3>
                                     <div class="nav-list">
-                                        <!-- <ul v-for='item in menus'>
-                                            <li v-if='item.children'>
-                                                <a href="#" v-on:click='toggleChildren(item)'>
-                                                    <i class="glyph-icon icon-home"></i>
-                                                    <label>{{item.text}}</label>
-                                                    <span class='glyphicon'></span>
-                                                </a>
-                                                <ul class="childs" v-show='item.expanded'>
-                                                    <li v-for='child in item.children' v-on:click="getDepartment">
-                                                        <a href="#" style="padding-left: 60px;">
-                                                            <i class=" glyph-icon icon-users "></i>
-                                                            <label>{{child.text}}</label>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul> -->
-                                        <ul v-for='item in Department'>
-                                            <li v-if='item.children'>
-                                                <a href="#" v-on:click='toggleChildren(item)'>
+                                        <ul v-for="item in Department">
+                                            <li v-if="item.children">
+                                                <a href="#" v-on:click="toggleChildren(item)">
                                                     <i class="glyph-icon icon-home"></i>
                                                     <label>{{item.Department_Name}}</label>
-                                                    <span class='glyphicon'></span>
                                                 </a>
-                                                <ul class="childs" v-show='item.expanded' v-on:click='toggleChildren(item)'>
-                                                    <li v-for='child in item.children'>
-                                                        <a href="#" style="padding-left: 60px;">
+                                                <ul class="childs" v-show="item.expanded">
+                                                    <li v-for="child in item.children">
+                                                        <a href="#" style="padding-left: 60px;" v-on:click="getAccountInfor(child.Department_Id)">
                                                             <i class=" glyph-icon icon-users "></i>
                                                             <label>{{child.Department_Name}}</label>
                                                         </a>
-                                                        <ul class="childs1">
-                                                            <li v-for='child1 in child.children'>
-                                                                <a href="#" style="padding-left: 60px;">
-                                                                    <i class=" glyph-icon icon-users "></i>
-                                                                    <label>{{child1.Department_Name}}</label>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -117,7 +91,66 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="example-code col-md-9">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"></th>
+                                            <th>姓名</th>
+                                            <th>账号</th>
+                                            <th>电话</th>
+                                            <th>上次登入时间</th>
+                                            <th class="text-center">状态</th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(accountInfor, index) in AccountInfors">
+                                            <td>{{index+1}}</td>
+                                            <td class="font-bold text-center">{{accountInfor.User_Name}}</td>
+                                            <td class="font-bold text-center">{{accountInfor.User_No}}</td>
+                                            <td class="font-bold text-center">{{accountInfor.User_Mobile}}</td>
+                                            <td class="font-bold text-center">{{accountInfor.User_LoginTime}}</td>
+                                            <td>
+                                                <div class="label bg-orange">{{accountInfor.User_Status == 1}}</div>
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a href="javascript:;" title="" class="btn medium bg-blue" data-toggle="dropdown">
+                                                        <span class="button-content">
+                                                                    <i class="glyph-icon font-size-11 icon-cog"></i>
+                                                                    <i class="glyph-icon font-size-11 icon-chevron-down"></i>
+                                                                </span>
+                                                    </a>
+                                                    <ul class="dropdown-menu float-right">
+                                                        <li>
+                                                            <a href="javascript:;" title="">
+                                                                <i class="glyph-icon icon-edit mrg5R"></i> 编辑
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" title="">
+                                                                <i class="glyph-icon icon-calendar mrg5R"></i> 重置密码
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="javascript:;" class="font-red" title="">
+                                                                <i class="glyph-icon icon-remove mrg5R"></i> 删除
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
+
+
                     </div>
                     <!-- #page-content -->
                 </div>

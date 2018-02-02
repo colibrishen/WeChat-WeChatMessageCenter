@@ -77,3 +77,20 @@ exports.getDepartment = function(callback) {
         }
     });
 };
+
+exports.getAccountInfor = function(departmentId, callback) {
+    connection = new mssql.ConnectionPool(dbParam, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            db.sql(connection, "SELECT us.* FROM T_Department as dp " +
+                "LEFT  JOIN T_DepartmentManager as dm ON dp.Department_Id = dm.Department_Id " +
+                "LEFT JOIN T_UserInfors as us ON dm.Manager = us.User_Id " +
+                "where dp.Department_Id = " + departmentId,
+                function(err, result) {
+                    callback && callback(result.recordset);
+                });
+        }
+    });
+};

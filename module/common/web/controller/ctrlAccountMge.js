@@ -1,7 +1,9 @@
 var app = new Vue({
     el: '#vueAccountMge',
     data: {
-        Department: []
+        Item: 0,
+        Department: [],
+        AccountInfors: []
     },
     methods: {
         toggleChildren: function(item) {
@@ -38,6 +40,16 @@ var app = new Vue({
                 }
                 return lstChild;
             };
+        },
+        getAccountInfor: function(departmentId) {
+            axios.post('/getAccountInfor', { id: departmentId }).then(res => {
+                var kk;
+                if (res.data.Status == 0) {
+                    this.AccountInfors = res.data.LstData;
+                } else {
+                    console.log(res.data.LstData);
+                }
+            });
         }
     }
 });
