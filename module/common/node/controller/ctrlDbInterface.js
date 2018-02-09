@@ -94,3 +94,20 @@ exports.getAccountInfor = function(departmentId, callback) {
         }
     });
 };
+
+exports.resetPwd = function(body, callback) {
+    connection = new mssql.ConnectionPool(dbParam, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            var md5 = crypto.createHash('md5'),
+                pwd = 1;
+            var pwd = md5.update(body.pwd).digest('hex');
+            db.sql(connection, "UPDATE T_UserInfors SET User_Password = " + pwd + " WHERE User_Id = " + body.Id,
+                function(err, result) {
+                    callback && callback(result.recordset);
+                });
+        }
+    });
+};

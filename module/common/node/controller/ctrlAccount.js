@@ -33,3 +33,15 @@ exports.getAccountInfor = function(req, res) {
         }
     });
 };
+
+exports.resetPwd = function(req, res) {
+    dbInterface.resetPwd(req.body, val => {
+        try {
+            if (val.length > 0) {
+                res.json({ Status: 0 });
+            }
+        } catch (error) {
+            res.json({ Status: -1 });
+        }
+    });
+};

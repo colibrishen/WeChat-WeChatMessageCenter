@@ -68,7 +68,7 @@
                         <div class="example-box">
                             <div class="col-md-3 column-sort ui-sortable">
                                 <div class="content-box mrg15B" style="position: relative; left: 0px; top: 0px;">
-                                    <h3 class="content-box-header primary-bg" v-on:click="getDepartment">
+                                    <h3 class="content-box-header primary-bg">
                                         <span>部门</span>
                                     </h3>
                                     <div class="nav-list">
@@ -78,12 +78,34 @@
                                                     <i class="glyph-icon icon-home"></i>
                                                     <label>{{item.Department_Name}}</label>
                                                 </a>
-                                                <ul class="childs" v-show="item.expanded">
-                                                    <li v-for="child in item.children">
-                                                        <a href="#" style="padding-left: 60px;" v-on:click="getAccountInfor(child.Department_Id)">
-                                                            <i class=" glyph-icon icon-users "></i>
-                                                            <label>{{child.Department_Name}}</label>
-                                                        </a>
+                                                <ul v-for="child1 in item.children" v-show="item.expanded">
+                                                    <li v-if="child1.children">
+                                                        <div v-on:click="getAccountInfor(child1.Department_Id)">
+                                                            <a href="#" style="padding-left: 30px;" v-on:click="toggleChildren(child1)">
+                                                                <i class=" glyph-icon icon-users "></i>
+                                                                <label>{{child1.Department_Name}}</label>
+                                                            </a>
+                                                        </div>
+                                                        <ul v-for="child2 in child1.children" v-show="child1.expanded">
+                                                            <li v-if="child2.children">
+                                                                <div v-on:click="getAccountInfor(child2.Department_Id)">
+                                                                    <a href="#" style="padding-left: 50px;" v-on:click="toggleChildren(child2)">
+                                                                        <i class="glyph-icon icon-home"></i>
+                                                                        <label>{{child2.Department_Name}}</label>
+                                                                    </a>
+                                                                </div>
+                                                                <ul v-for="child3 in child2.children" v-show="child2.expanded">
+                                                                    <li v-if="child3.children">
+                                                                        <div v-on:click="getAccountInfor(child3.Department_Id)">
+                                                                            <a href="#" style="padding-left: 70px;" v-on:click="toggleChildren(child3)">
+                                                                                <i class=" glyph-icon icon-users "></i>
+                                                                                <label>{{child3.Department_Name}}</label>
+                                                                            </a>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -130,7 +152,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:;" title="">
+                                                            <a href="javascript:;" title="" v-on:click="resetPwd(accountInfor.User_Id, 888888)">
                                                                 <i class="glyph-icon icon-calendar mrg5R"></i> 重置密码
                                                             </a>
                                                         </li>
@@ -146,11 +168,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
-
-
                     </div>
                     <!-- #page-content -->
                 </div>
